@@ -1,0 +1,6 @@
+[build]
+  command = "npm install && ionic build --prod"
+  publish = "www"
+
+[context.production.environment]
+  NODE_ENV = "production"
