@@ -1,3 +1,3 @@
 [build]
-  command = "npm install && ionic build --prod"  # Comando para instalar dependencias y construir la app
-  publish = "www"  # Carpeta donde Netlify buscará los archivos compilados (especifica la salida de Ionic)
+  command = "npm install && npm install -g @ionic/cli && ionic build --prod"
+  publish = "www"
