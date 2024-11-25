@@ -1,0 +1,14 @@
+{
+  "name": "SistemaNotas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone",
+  "serve": {
+    "host": "0.0.0.0",
+    "port": 8100,
+    "open": "none",
+    "ssl": false,
+    "proxy": null
+  }
+}

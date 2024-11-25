@@ -1,0 +1,20 @@
+.tarea-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Dos columnas: izquierda más grande */
+  gap: 15px; /* Espacio entre columnas */
+  align-items: center; /* Alinea verticalmente los contenidos */
+}
+
+.tarea-info {
+  font-size: 1rem;
+  color: var(--ion-color-dark);
+}
+
+.puntaje-info {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--ion-color-medium);
+  font-weight: bold;
+}
+
+  

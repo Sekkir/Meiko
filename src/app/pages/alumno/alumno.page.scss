@@ -1,0 +1,22 @@
+.student-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+ion-card-header {
+  display: flex;
+  justify-content: space-between;
+  //align-items: center;
+}
+
+ion-row {
+  margin: 0;
+}
+
+ion-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

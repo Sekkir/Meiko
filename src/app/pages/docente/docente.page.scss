@@ -1,0 +1,49 @@
+.scrollable-list {
+    max-height: 300px;   // Ajusta la altura máxima según tus necesidades
+    overflow-y: auto;    // Habilita el scroll vertical
+  }
+
+  ion-item {
+    display: flex;
+    justify-content: space-between; /* Distribuye el contenido a los extremos */
+    align-items: center; /* Alinea los elementos verticalmente */
+  }
+  
+  .puntaje {
+    font-weight: bold; /* Si quieres resaltar el puntaje */
+    text-align: right; /* Asegura que el texto esté alineado a la derecha */
+    margin-left: auto; /* Empuja el puntaje hacia la derecha */
+  }
+  
+
+  .puntaje-container {
+    display: inline-block;
+    padding: 0px 8px;  /* Menos padding para que el fondo no sea tan alto */
+    border-radius: 10px;  /* Bordes redondeados para que no se vean tan cuadrados */
+    color: white; /* El texto será blanco para que resalte sobre el fondo */
+    font-weight: bold;
+    text-align: center;  /* Centrar el texto */
+    font-size: 12px; /* Ajusta el tamaño de la fuente si es necesario */
+  }
+  
+  .puntaje-bajo {
+    background-color: 	#bb2124; /* Fondo rojo para puntajes bajos */
+  }
+  
+  .puntaje-medio {
+    background-color: #f0ad4e; /* Fondo amarillo para puntajes medios */
+    color: black; /* Asegura que el texto sea visible sobre el amarillo */
+  }
+  
+  .puntaje-alto {
+    background-color: #22bb33; /* Fondo verde para puntajes altos */
+  }
+
+  .no-estudiantes {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--ion-color-medium);
+  }
+  
+  

@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Docente</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="['/home-docente']"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Puntajes de Actividades -->
+   <ion-card>
+     <ion-header>
+       <ion-toolbar color="dark">
+         <ion-title>Puntajes de Actividades</ion-title>
+       </ion-toolbar>
+     </ion-header>
+   
+     <div class="scrollable-list" color="primary">
+      <ion-list>
+        <ion-item *ngIf="estudiantes.length === 0">
+          <ion-label class="no-estudiantes">
+            <ion-chip color="medium">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <ion-label>No hay estudiantes que mostrar...</ion-label>
+            </ion-chip>
+          </ion-label>
+        </ion-item>
+      
+        <ion-item *ngFor="let estudiante of estudiantes">
+          <ion-label>
+            <ion-chip color="primary" class="item-label">
+              <ion-icon name="person-outline"></ion-icon>
+              <ion-label>{{ estudiante.nombres_usuario + " " + estudiante.apellidos_usuario }}</ion-label>
+            </ion-chip>
+          </ion-label>
+          <ion-badge [ngClass]="getPuntajeClass(estudiante.puntaje)" class="puntaje">
+            {{ estudiante.puntaje }}
+          </ion-badge>
+        </ion-item>
+      </ion-list>
+      
+     </div>
+   </ion-card>
+
+  <!-- Separación mediante margen -->
+  <div  style="margin-top: 20px;"></div>
+   <ion-card>
+     <!-- Actividades Activas -->
+     <ion-header>
+       <ion-toolbar color="dark">
+         <ion-title>Actividades activas</ion-title>
+       </ion-toolbar>
+     </ion-header>
+   
+     <ion-list class="scrollable-list">
+
+      <ion-item *ngIf="tareas.length === 0">
+        <ion-label class="no-estudiantes">
+          <ion-chip color="medium">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+            <ion-label>No hay tareas que mostrar...</ion-label>
+          </ion-chip>
+        </ion-label>
+      </ion-item>
+       <ion-item *ngFor="let tarea of tareas">
+         <ion-label>{{ tarea.titulo_tarea }}</ion-label>
+         <ion-button fill="outline" slot="end" color="success" (click)="detalleTarea(tarea.id_curso, tarea.id_seccion, tarea.id_tarea)">
+           <ion-icon slot="icon-only" name="enter-outline"></ion-icon>
+         </ion-button>
+       </ion-item>
+     </ion-list>
+   </ion-card>
+
+  <!-- Botón para crear tareas -->
+  <ion-button expand="block" color="tertiary" class="ion-margin-top" (click)="haciaCrearTarea()">
+    Crear Tarea
+  </ion-button>
+</ion-content>

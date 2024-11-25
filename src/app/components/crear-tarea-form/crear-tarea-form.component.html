@@ -1,0 +1,91 @@
+<ion-content>
+  <form [formGroup]="tareaForm" (ngSubmit)="crearTarea()">
+    <ion-card color="light" class="card-custom">
+      <ion-header>
+        <ion-toolbar color="dark">
+          <ion-title>Detalles de la Tarea</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+        
+        <ion-list>
+          <!-- Título -->
+          <ion-item>
+            <ion-input
+            type="text"
+            formControlName="tituloTarea" 
+            label="Título de la tarea" 
+            labelPlacement="floating" 
+            placeholder="Ingrese el titulo"
+            errorText="* El titulo de la tarea es obligatorio."
+            ></ion-input>
+          </ion-item>
+    
+          <!-- Descripción -->
+          <ion-item>
+            <ion-input
+            type="text"
+            formControlName="descripcionTarea"  
+            label="Descripción" 
+            labelPlacement="floating" 
+            placeholder="Ingrese descripcion"
+            errorText="* La descripcion es obligatoria."
+            ></ion-input>
+          </ion-item>    
+    
+          <!-- Puntaje -->
+          <ion-item>
+            <ion-input 
+            formControlName="puntaje" 
+            label="Puntaje" 
+            type="number" 
+            step="any"
+            placeholder="Ingrese puntaje"
+            errorText="* El puntaje es obligatorio."
+            ></ion-input>
+          </ion-item>
+        </ion-list>   
+    </ion-card>
+      <ion-card color="light" class="card-custom">
+        <ion-header>
+          <ion-toolbar color="dark">
+            <ion-title>Fecha de Entrega</ion-title>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-list>
+          <ion-datetime
+          formControlName="fechaLimite"
+          type="date"
+          value="2024-12-31"
+          display-format="DD-MM-YYYY"
+          ></ion-datetime>      
+        </ion-list>
+      </ion-card>
+          
+          <div style="margin-top: 20px;"></div>
+    
+          
+      
+    
+      <!-- Botones -->
+      <ion-row class="ion-justify-content-around" style="margin-top: 20px;">
+        <ion-col>
+          <ion-button 
+          type="submit"
+          expand="full" 
+          color="primary" 
+          shape="round"
+          [disabled]="tareaForm.invalid" 
+        >
+        <ng-container>
+          Guardar
+        </ng-container>
+        <ng-template #loading>
+          <ion-spinner name="dots"></ion-spinner>
+        </ng-template>
+        </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+</ion-content>

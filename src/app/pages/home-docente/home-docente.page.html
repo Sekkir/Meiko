@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Bienvenido  </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="logout()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card color="light" class="card-custom">
+    <ion-header>
+      <ion-toolbar color="dark">
+        <ion-title>Clases disponibles</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-list class="scrollable-list">
+      <ion-item size="12" *ngFor="let curso of cursos">
+        <ion-label>
+          <ion-chip color="primary">
+            <ion-icon name="library-outline"></ion-icon>
+            <ion-label>{{ curso.nombre_corto }}</ion-label>
+          </ion-chip>
+          <ion-chip color="primary">
+            <ion-icon name="library-outline"></ion-icon>
+            <ion-label>{{ curso.nombre_curso }}</ion-label>
+          </ion-chip>
+        </ion-label>
+        <ion-button color="success" fill="outline" slot="end"
+        (click)="toDocente(curso.id_curso, curso.id_seccion)">
+          <ion-icon slot="icon-only" name="enter-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+    
+  </ion-card>
+  <ion-button expand="block" color="danger" class="ion-margin-top" (click)="logout()">
+    Cerrar sesion
+  </ion-button> 
+</ion-content>

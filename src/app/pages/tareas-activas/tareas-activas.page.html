@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>Tareas Activas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="['/alumno']"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <!-- Lista de Tareas Activas -->
+  <ion-list>
+    <ion-card *ngFor="let tarea of tareas_pendientes" class="tarea-card">
+      <ion-card-content>
+        <div class="tarea-grid">
+          <!-- Columna izquierda -->
+          <div class="tarea-info">
+            <ion-card-title><strong>{{ tarea.titulo_tarea }}</strong></ion-card-title>
+            <p>{{ tarea.descripcion }}</p>
+            <ion-card-subtitle>Clase: {{ tarea.nombre_curso }}</ion-card-subtitle>
+            <ion-card-subtitle><strong>Entrega: {{ tarea.fecha_limite | date }}</strong></ion-card-subtitle>
+
+            
+          </div>
+
+          <!-- Columna derecha -->
+          <div class="puntaje-info">
+            <p><strong>Puntaje:</strong></p>
+            <p><strong>{{ tarea.valor }}</strong></p>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

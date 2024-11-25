@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="['/docente']"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle de Tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ tareaDetalle?.titulo_tarea || 'Cargando título...' }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Descripción:</strong> {{ tareaDetalle?.descripcion || 'Cargando descripción...' }}</p>
+      <p><strong>Valor:</strong> {{ tareaDetalle?.valor || 'Cargando valor...' }}</p>
+      <p><strong>Fecha Límite:</strong> {{ tareaDetalle?.fecha_limite | date }}</p>
+    </ion-card-content>
+  </ion-card>
+  
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Estudiantes Asignados</ion-card-title>
+    </ion-card-header>
+    <ion-list>
+      <ion-item *ngFor="let estudiante of estudiantes">
+        <ion-label>
+          {{ estudiante.nombres_usuario || 'no hay estudiantes que mostrar...' }} {{ estudiante.apellidos_usuario }} 
+        </ion-label>
+  
+        <!-- Ícono que actúa como un botón para cambiar el estado -->
+        <ion-icon 
+          [name]="getIconoEstado(estudiante.estado)" 
+          slot="end" 
+          [color]="getColorEstado(estudiante.estado)" 
+          (click)="toggleOptions(estudiante)">
+        </ion-icon>
+  
+        <!-- Opciones de "Entregado" y "No Entregado" (solo visibles cuando se hace clic en el ícono de estado) -->
+        <div *ngIf="estudiante.showOptions">
+          <ion-button expand="full" (click)="markAsEntregado(estudiante)">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+            Entregado
+          </ion-button>
+          <ion-button expand="full" (click)="markAsNoEntregado(estudiante)">
+            <ion-icon name="close-circle-outline"></ion-icon>
+            No Entregado
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+  <ion-button expand="full" (click)="confirmarFinalizacion()">Finalizar entrega</ion-button>
+  </ion-card>
+  
+
+</ion-content>

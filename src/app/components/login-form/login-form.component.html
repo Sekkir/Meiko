@@ -1,0 +1,36 @@
+<div class="login-container">
+    <ion-card>
+      <ion-card-header>
+        <img src="assets/icon/logoMeiko.png" alt="logoMeiko">
+        <ion-card-title class="ion-text-center">Bienvenido</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form [formGroup]="loginForm">
+          <ion-item>
+            <ion-input
+            type="text"
+            formControlName="usuario"  
+            label="Usuario" 
+            labelPlacement="floating" 
+            placeholder="Ingrese usuario"
+            errorText="* El usuario es obligatorio."
+            ></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-input
+            type="password"
+            formControlName="clave"  
+            label="Contraseña" 
+            labelPlacement="floating" 
+            placeholder="Ingrese contraseña"
+            errorText="* La contraseña es obligatoria."
+            ></ion-input>
+          </ion-item>
+          <ion-button expand="block" [disabled]="!loginForm.valid" (click)="onLogin()">Iniciar sesion</ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+</div>
+
