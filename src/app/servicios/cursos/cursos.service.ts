@@ -18,7 +18,7 @@ export class CursosService {
   // Método para obtener los cursos por ID de docente
   getCursosByDocente(id_docente: number) {
     console.log('Consultando cursos para el docente con ID:', id_docente);
-    return this.http.get<any>(`${this.apiUrl}cursos/${id_docente}`).pipe(
+    return this.http.get<any>(`${this.apiUrl}/cursos/${id_docente}`).pipe(
       map((response) => {
         // Verifica que la respuesta tenga la propiedad 'cursos'
         console.log('Respuesta de la API:', response);  // Para verificar si el formato es correcto
