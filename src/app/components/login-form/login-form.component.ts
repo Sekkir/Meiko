@@ -46,39 +46,36 @@ export class LoginFormComponent  implements OnInit {
 
 
 
-  async onLogin() {
+  onLogin() {
     const { usuario, clave } = this.loginForm.value;
   
     this.AuthService.login(usuario, clave).subscribe(
-      async (response) => {
+      (response) => {
         if (response.success) {
           console.log(response);
           this.tipoUsuario = response.usuarioLvl;
           console.log('Inicio de sesión exitoso');
-          
-          // Mostrar toast y navegar según el tipo de usuario
-          if (response.usuarioLvl === 2) {
-            await this.handleLoginSuccess('/alumno', response.nombre_usuario);
-          } else if (response.usuarioLvl === 1) {
-            await this.handleLoginSuccess('/home-docente', response.nombre_usuario);
-          }
+  
+          // Mostrar el toast y redirigir
+          this.presentToast(`Bienvenido ${response.nombre_usuario}`).then(() => {
+            if (response.usuarioLvl === 2) {
+              this.router.navigate(['/alumno']);
+            } else if (response.usuarioLvl === 1) {
+              this.router.navigate(['/home-docente']);
+            }
+          });
         } else {
           this.presentToast('Usuario o contraseña incorrectos');
           console.log('Usuario o contraseña incorrectos');
         }
       },
-      async (error) => {
-        await this.presentToast('Error en el inicio de sesión');
+      (error) => {
+        this.presentToast('Error en el inicio de sesión');
         console.error('Error en el inicio de sesión:', error);
       }
     );
   }
   
-  // Maneja el toast y la navegación en una función separada
-  private async handleLoginSuccess(route: string, username: string) {
-    await this.presentToast(`Bienvenido ${username}`);
-    this.router.navigate([route]);
-  }
   
   // Mostrar el toast
   private async presentToast(message: string) {
