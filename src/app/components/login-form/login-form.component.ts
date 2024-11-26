@@ -79,7 +79,7 @@ export class LoginFormComponent  implements OnInit {
   
 
 
-  async presentToast(message: string) {
+  private async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 2000,
