@@ -13,7 +13,7 @@ export class TareasService {
   // Método para obtener las tareas según curso y sección
   obtenerTareas(curso: number, seccion: number): Observable<any> {
     console.log(`Obteniendo tareas para curso: ${curso} y sección: ${seccion}`);
-    return this.http.get(`${this.apiUrl}/${curso}/${seccion}`);
+    return this.http.get(`${this.apiUrl}/tareas/${curso}/${seccion}`);
   }
 
   crearTarea(tarea: any) {
