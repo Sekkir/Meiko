@@ -31,7 +31,8 @@ export class LoginFormComponent  implements OnInit {
 
   constructor(private AuthService: AuthService, 
               private router: Router,
-              private toastController: ToastController) { }
+              private toastController: ToastController,
+            ) { }
 
   ngOnInit() {
     this.initForm();

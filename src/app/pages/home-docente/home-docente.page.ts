@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardContent, IonButtons, IonBackButton, IonButton, IonList, IonItem, IonIcon, IonLabel, IonChip } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardContent, IonButtons, IonBackButton, IonButton, IonList, IonItem, IonIcon, IonLabel, IonChip, ToastController } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
@@ -16,7 +16,7 @@ import { CursosService } from 'src/app/servicios/cursos/cursos.service';
   imports: [IonChip, IonLabel, IonIcon, IonItem, IonList, IonButton, IonBackButton, IonButtons, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class HomeDocentePage implements OnInit {
-
+  id_usuario!: Number;
   secciones: any[] = [];  // Aquí almacenaremos las secciones
   nombre: any[] = []; // Se almacenan los datos del profesor
   cursos: any[] = [];
@@ -25,6 +25,7 @@ export class HomeDocentePage implements OnInit {
     private cursosService: CursosService,
     private authService: AuthService,
     private router: Router,
+    private toastController: ToastController,
   ) {addIcons({libraryOutline,enterOutline});}
 
   ngOnInit() {
@@ -65,6 +66,15 @@ export class HomeDocentePage implements OnInit {
         console.error('Error al cargar las secciones', error);
       }
     );
+  }
+
+  private async mostrarToast(mensaje: string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 3000,
+      position: 'bottom',
+    });
+    await toast.present();
   }
   
 
