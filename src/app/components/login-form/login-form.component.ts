@@ -50,7 +50,7 @@ export class LoginFormComponent  implements OnInit {
     const { usuario, clave } = this.loginForm.value;
   
     this.AuthService.login(usuario, clave).subscribe(
-      (response) => {
+      async (response) => {
         if (response.success) {
           console.log(response);
           this.tipoUsuario = response.usuarioLvl; // Obtenemos el tipo de usuario desde la respuesta
@@ -59,10 +59,10 @@ export class LoginFormComponent  implements OnInit {
   
           // Redirige según el tipo de usuario
           if (response.usuarioLvl === 2) {
-            this.presentToast('Bienvenido ' + response.nombre_usuario);
+            await this.presentToast('Bienvenido ' + response.nombre_usuario);
             this.router.navigate(['/alumno']); // Página del alumno
           } else if (response.usuarioLvl === 1) {
-            this.presentToast('Bienvenido ' + response.nombre_usuario);
+            await this.presentToast('Bienvenido ' + response.nombre_usuario);
             this.router.navigate(['/home-docente']); // Página del docente
           }
         } else {
