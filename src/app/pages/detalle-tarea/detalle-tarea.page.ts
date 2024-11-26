@@ -1,7 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, } from '@angular/router';
 import { AlertController,NavController,ToastController,IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem, IonIcon, IonItemDivider, IonList, IonChip, IonButton, IonTabButton } from '@ionic/angular/standalone';
 import { TareasService } from '../../servicios/tareas/tareas.service';
 import { addIcons } from 'ionicons';
@@ -19,6 +19,7 @@ import { EstudiantesService } from 'src/app/servicios/estudiantes/estudiantes.se
 })
 export class DetalleTareaPage implements OnInit {
   estudiantes: any[] = [];
+  tareas: any[] = [];
   tareaDetalle: any;
   id_curso!: number;
   id_seccion!: number;
@@ -185,8 +186,9 @@ export class DetalleTareaPage implements OnInit {
         {
           text: 'Sí',
           handler: () => {
-            this.finalizarEntrega();
-            this.loadEstudiantes(); // Llama al método para finalizar la tarea
+            this.finalizarEntrega(); // Llama al método para finalizar la tarea
+            this.loadEstudiantes(); // refresh de estudiantes
+            this.loadTareas(); //refresh de tareas
           },
         },
       ],
@@ -211,6 +213,25 @@ export class DetalleTareaPage implements OnInit {
         console.error("Error al cargar estudiantes y puntajes:", error);
       }
     );
+  }
+
+  loadTareas() {
+    const id_curso = this.id_curso;
+    const seccion = this.id_seccion;
+    this.tareasService.obtenerTareas(id_curso, seccion) 
+      .subscribe(
+        (response) => {
+          if (response.success) {
+            this.tareas = response.tareas;
+            console.log('Datos de tareas cargados:', this.tareas); // Confirma que cada tarea contiene id_curso y id_seccion
+          } else {
+            console.error("No se encontraron tareas para este curso y sección.");
+          }
+        },
+        (error) => {
+          console.error("Error al cargar tareas:", error);
+        }
+      );
   }
   
   
