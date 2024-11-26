@@ -10,12 +10,12 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ tareaDetalle?.titulo_tarea || 'Cargando título...' }}</ion-card-title>
+      <ion-card-title>{{ tareaDetalle[0].titulo_tarea || 'Cargando título...' }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p><strong>Descripción:</strong> {{ tareaDetalle?.descripcion || 'Cargando descripción...' }}</p>
-      <p><strong>Valor:</strong> {{ tareaDetalle?.valor || 'Cargando valor...' }}</p>
-      <p><strong>Fecha Límite:</strong> {{ tareaDetalle?.fecha_limite | date }}</p>
+      <p><strong>Descripción:</strong> {{ tareaDetalle[0].descripcion || 'Cargando descripción...' }}</p>
+      <p><strong>Valor:</strong> {{ tareaDetalle[0].valor || 'Cargando valor...' }}</p>
+      <p><strong>Fecha Límite:</strong> {{ tareaDetalle[0].fecha_limite | date }}</p>
     </ion-card-content>
   </ion-card>
   
