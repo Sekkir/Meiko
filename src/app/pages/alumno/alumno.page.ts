@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonRow, IonCol, IonTabButton, IonIcon, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonRow, IonCol, IonButton, ToastController } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { EstudiantesService } from 'src/app/servicios/estudiantes/estudiantes.service';
 import { Router } from '@angular/router';
@@ -22,6 +22,7 @@ export class AlumnoPage implements OnInit {
     private authService: AuthService,
     private estudianteService: EstudiantesService,
     private router: Router,
+    private toastController: ToastController,
   ) { }
 
   ngOnInit() {
@@ -66,6 +67,15 @@ export class AlumnoPage implements OnInit {
       this.router.navigate(['/tareas-activas'],
         { queryParams: { estudiante: this.id_estudiante } });
      
+    }
+
+    private async mostrarToast(mensaje: string) {
+      const toast = await this.toastController.create({
+        message: mensaje,
+        duration: 3000,
+        position: 'bottom',
+      });
+      await toast.present();
     }
 
 }
