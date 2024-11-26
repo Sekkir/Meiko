@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonItem, IonInput, IonButton } from "@ionic/angular/standalone";
+import { IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonItem, IonInput, IonButton, IonToolbar } from "@ionic/angular/standalone";
 import { ToastController } from '@ionic/angular';
 
 
@@ -13,7 +13,7 @@ import { ToastController } from '@ionic/angular';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
   standalone: true,
-  imports: [IonButton, IonInput, IonItem, IonCardContent, IonCardTitle, IonCard, IonCardHeader,ReactiveFormsModule, FormsModule, CommonModule ]
+  imports: [IonToolbar, IonButton, IonInput, IonItem, IonCardContent, IonCardTitle, IonCard, IonCardHeader,ReactiveFormsModule, FormsModule, CommonModule ]
 })
 export class LoginFormComponent  implements OnInit {
 
