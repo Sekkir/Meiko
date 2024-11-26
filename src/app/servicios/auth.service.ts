@@ -11,7 +11,7 @@ import { CursosService } from './cursos/cursos.service';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000';  // Asegúrate de usar la URL correcta
+  private apiUrl = 'https://bemeiko-production.up.railway.app/api';  // Asegúrate de usar la URL correcta
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(
@@ -27,7 +27,7 @@ export class AuthService {
 
   // Método para hacer login
   login(usuario: string, clave: string) {
-    return this.http.post<any>(`${this.apiUrl}/auth/login`, { usuario, clave }).pipe(
+    return this.http.post<any>(`${this.apiUrl}/login`, { usuario, clave }).pipe(
       tap(response => {
         if (response.success) {
           localStorage.setItem('authToken', response.token);  // Guardamos el token
