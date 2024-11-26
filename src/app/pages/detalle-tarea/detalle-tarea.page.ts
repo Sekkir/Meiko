@@ -62,7 +62,7 @@ export class DetalleTareaPage implements OnInit {
         // Agregar console log para verificar los datos que recibes
         console.log('Datos recibidos de la API:', data);
         
-        this.tareaDetalle = data.tareas[0];
+        this.tareaDetalle = data.tarea;
 
         console.log(this.tareaDetalle.titulo_tarea)
   
