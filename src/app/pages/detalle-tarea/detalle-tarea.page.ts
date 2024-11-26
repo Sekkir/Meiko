@@ -1,7 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, } from '@angular/router';
+import { ActivatedRoute, Router, } from '@angular/router';
 import { AlertController,NavController,ToastController,IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem, IonIcon, IonItemDivider, IonList, IonChip, IonButton, IonTabButton } from '@ionic/angular/standalone';
 import { TareasService } from '../../servicios/tareas/tareas.service';
 import { addIcons } from 'ionicons';
@@ -32,6 +32,7 @@ export class DetalleTareaPage implements OnInit {
     private tareasService: TareasService,
     private toastController: ToastController,
     private navCtrl: NavController,
+    private router: Router,
     private alertController: AlertController,
     private estudiantesService: EstudiantesService,
   ) {addIcons({checkmarkCircleOutline,closeCircleOutline,camera,ellipsisHorizontalOutline,documentTextOutline,starOutline,calendarOutline,checkmarkCircle,closeCircle,hourglass,personOutline}); }
@@ -153,7 +154,8 @@ export class DetalleTareaPage implements OnInit {
       this.tareasService.finalizarEntrega(this.id_tarea);
       this.mostrarToast('Tarea finalizada correctamente.');
       // Cierra la página actual y regresa a la anterior
-      this.navCtrl.pop();
+      //this.navCtrl.pop();
+      this.router.navigate([`/docente/${this.id_curso}/${this.id_seccion}`]);
     } catch (error) {
       console.error('Error al finalizar tarea:', error);
       this.mostrarToast('Error al finalizar tarea.');

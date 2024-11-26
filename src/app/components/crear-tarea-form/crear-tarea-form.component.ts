@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; // Asegúrate de que ReactiveFormsModule está importado
-import { IonButton, IonInput, IonLabel, IonItem, IonContent, IonCard, IonHeader, IonToolbar, IonTitle, IonList, IonRow, IonCol, IonSpinner, IonDatetime } from '@ionic/angular/standalone';
+import { IonButton, IonInput, IonItem, IonContent, IonCard, IonHeader, IonToolbar, IonTitle, IonList, IonRow, IonCol, IonSpinner, IonDatetime } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { TareasService } from 'src/app/servicios/tareas/tareas.service';
 import { ActivatedRoute, Router } from '@angular/router';
