@@ -55,13 +55,14 @@ export class LoginFormComponent  implements OnInit {
           console.log(response);
           this.tipoUsuario = response.usuarioLvl; // Obtenemos el tipo de usuario desde la respuesta
           console.log(response.usuarioLvl);
-          this.presentToast('Inicio de sesión exitoso, Bienvenido ' + response.nombre_usuario);
           console.log('Inicio de sesión exitoso');
   
           // Redirige según el tipo de usuario
           if (response.usuarioLvl === 2) {
+            this.presentToast('Bienvenido ' + response.nombre_usuario);
             this.router.navigate(['/alumno']); // Página del alumno
           } else if (response.usuarioLvl === 1) {
+            this.presentToast('Bienvenido ' + response.nombre_usuario);
             this.router.navigate(['/home-docente']); // Página del docente
           }
         } else {
