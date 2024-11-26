@@ -11,14 +11,14 @@ export class CursosService {
   
   private cursos: any[] = [];
 
-  private apiUrl = 'http://localhost:3000';  // URL de tu API
+  private apiUrl = 'https://bemeiko-production.up.railway.app/api';  // URL de tu API
 
   constructor(private http: HttpClient) { }
 
   // Método para obtener los cursos por ID de docente
   getCursosByDocente(id_docente: number) {
     console.log('Consultando cursos para el docente con ID:', id_docente);
-    return this.http.get<any>(`${this.apiUrl}/cursos/cursos/${id_docente}`).pipe(
+    return this.http.get<any>(`${this.apiUrl}cursos/${id_docente}`).pipe(
       map((response) => {
         // Verifica que la respuesta tenga la propiedad 'cursos'
         console.log('Respuesta de la API:', response);  // Para verificar si el formato es correcto
@@ -29,7 +29,7 @@ export class CursosService {
 
     // Método para obtener las secciones por ID del docente
     getSeccionesPorDocente(id_docente: number): Observable<any> {
-      return this.http.get<any>(`${this.apiUrl}/cursos/secciones/${id_docente}`);
+      return this.http.get<any>(`${this.apiUrl}/secciones/${id_docente}`);
     }
 
     resetCursos() {
