@@ -46,24 +46,25 @@ export class LoginFormComponent  implements OnInit {
 
 
 
-  onLogin() {
+  async onLogin() {
     const { usuario, clave } = this.loginForm.value;
   
     this.AuthService.login(usuario, clave).subscribe(
-      (response) => {
+      async (response) => {
         if (response.success) {
           console.log(response);
-          this.tipoUsuario = response.usuarioLvl;
+          this.tipoUsuario = response.usuarioLvl; // Obtenemos el tipo de usuario desde la respuesta
+          console.log(response.usuarioLvl);
           console.log('Inicio de sesión exitoso');
   
-          // Mostrar el toast y redirigir
-          this.presentToast(`Bienvenido ${response.nombre_usuario}`).then(() => {
-            if (response.usuarioLvl === 2) {
-              this.router.navigate(['/alumno']);
-            } else if (response.usuarioLvl === 1) {
-              this.router.navigate(['/home-docente']);
-            }
-          });
+          // Redirige según el tipo de usuario
+          if (response.usuarioLvl === 2) {
+               this.presentToast('Bienvenido ' + response.nombre_usuario);
+            this.router.navigate(['/alumno']); // Página del alumno
+          } else if (response.usuarioLvl === 1) {
+               this.presentToast('Bienvenido ' + response.nombre_usuario);
+            this.router.navigate(['/home-docente']); // Página del docente
+          }
         } else {
           this.presentToast('Usuario o contraseña incorrectos');
           console.log('Usuario o contraseña incorrectos');
@@ -76,15 +77,14 @@ export class LoginFormComponent  implements OnInit {
     );
   }
   
-  
-  // Mostrar el toast
+
+
   private async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 2000,
-      position: 'bottom',
+      position: 'bottom'
     });
-    await toast.present();
+    toast.present();
   }
-  
 }
