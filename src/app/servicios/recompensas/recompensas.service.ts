@@ -12,10 +12,10 @@ export class RecompensasService {
   constructor(private http: HttpClient) {}
 
   crearRecompensa(data: any): Observable<any> {
-    return this.http.post(this.apiUrl,"/crear", data);
+    return this.http.post(this.apiUrl + "/crear", data);
   }
 
   getRecompensasByCurso(id_curso: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}s/${id_curso}`);  // Ajusta la URL para obtener las recompensas por curso
+    return this.http.get(`${this.apiUrl}s/curso/${id_curso}`);  // Ajusta la URL para obtener las recompensas por curso
   }
 }

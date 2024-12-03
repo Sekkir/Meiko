@@ -40,8 +40,7 @@ export class DocentePage implements OnInit {
      // Recuperar los parámetros de sessionStorage
      this.id_curso = Number(sessionStorage.getItem('id_curso'));
      this.id_seccion = Number(sessionStorage.getItem('id_seccion'));
-
-     
+ 
     // Obtén el parámetro id_curso de la URL
     this.route.paramMap.subscribe(params => {
       this.id_curso = Number(params.get('id_curso'));
@@ -53,13 +52,14 @@ export class DocentePage implements OnInit {
     });
   }
 
-  ionViewWillEnter() {
+  ionViewWillEnter() { 
     // Este método se ejecuta cada vez que entras en la página.
     this.loadEstudiantes();
     this.loadTareas();
   }
 
   loadEstudiantes() {
+
     const id_curso = this.id_curso;
     this.estudiantesService.getEstudiantesByCurso(id_curso).subscribe(
       (response) => {

@@ -38,12 +38,30 @@ export class RecompensasPage implements OnInit {
    }
 
   ngOnInit() {
+
+      // Recuperar los valores almacenados
+  const id_curso = sessionStorage.getItem('id_curso') || localStorage.getItem('id_curso');
+  const id_docente = sessionStorage.getItem('id_docente') || localStorage.getItem('id_docente');
+  
+  if (id_curso && id_docente) {
+    // Asigna los valores a las variables correspondientes
+    this.id_curso = Number(id_curso);
+    this.id_docente = Number(id_docente);
+    console.log('Recuperados de sesión:', this.id_curso, this.id_seccion);
+  }
+
     this.id_docente = this.getDocenteId();
+
+
     console.log("id_Docente que crea tarea: " + this.id_docente)
     this.route.queryParams.subscribe(params => {
       this.id_curso = params['id_curso'];
       this.id_seccion = params['id_seccion'];
     });
+
+
+    this.obtenerRecompensas();
+
   }
 
 
@@ -67,6 +85,7 @@ export class RecompensasPage implements OnInit {
       const recompensaData = {
         ...this.recompensaForm.value,
         id_docente: this.id_docente,  // Agregar el ID del docente
+        id_curso: this.id_curso,  // Agregar el ID del curso
       };
       console.log('Recompensa creada:', recompensaData);
 
@@ -80,6 +99,7 @@ export class RecompensasPage implements OnInit {
 
         // Limpiar los campos del formulario
         this.recompensaForm.reset();
+        this.obtenerRecompensas();
         
         },
         (error) => {
