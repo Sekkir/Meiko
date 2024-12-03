@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormGroup } from '@angular/forms';
-import { ToastController,IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonRow, IonCol, IonButton, IonButtons, IonBackButton, IonLabel, IonInput } from '@ionic/angular/standalone';
+import { ToastController,IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonRow, IonCol, IonButton, IonButtons, IonBackButton, IonLabel, IonInput, IonChip, IonIcon, IonBadge } from '@ionic/angular/standalone';
 import { ActivatedRoute} from '@angular/router';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/servicios/auth.service';
@@ -13,14 +13,15 @@ import { RecompensasService } from 'src/app/servicios/recompensas/recompensas.se
   templateUrl: './recompensas.page.html',
   styleUrls: ['./recompensas.page.scss'],
   standalone: true,
-  imports: [IonLabel,IonInput,IonBackButton, IonButtons, ReactiveFormsModule,IonButton, IonCol, IonRow, IonCard, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonBadge, IonIcon, IonChip, IonLabel,IonInput,IonBackButton, IonButtons, ReactiveFormsModule,IonButton, IonCol, IonRow, IonCard, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class RecompensasPage implements OnInit {
 
-  id_curso!: Number;
+  id_curso!: number;
   id_seccion!: Number;
   recompensaForm: FormGroup;
   id_docente!: Number;
+  recompensas: any[] = []; 
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +44,21 @@ export class RecompensasPage implements OnInit {
       this.id_curso = params['id_curso'];
       this.id_seccion = params['id_seccion'];
     });
+  }
+
+
+
+
+
+  obtenerRecompensas() {
+    this.recompensasService.getRecompensasByCurso(this.id_curso).subscribe(
+      (data) => {
+        this.recompensas = data;  // Asignar las recompensas a la variable
+      },
+      (error) => {
+        console.error('Error al obtener las recompensas:', error);
+      }
+    );
   }
 
 

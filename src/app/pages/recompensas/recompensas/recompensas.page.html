@@ -73,4 +73,39 @@
     </ion-card>
 
   </form>
+
+
+  <ion-card>
+    <ion-header>
+      <ion-toolbar color="dark">
+        <ion-title>Recompensas del Curso</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <div class="scrollable-list" color="primary">
+      <ion-list>
+        <ion-item *ngIf="recompensas.length === 0">
+          <ion-label class="no-recompensas">
+            <ion-chip color="medium">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <ion-label>No hay recompensas disponibles...</ion-label>
+            </ion-chip>
+          </ion-label>
+        </ion-item>
+  
+        <ion-item *ngFor="let recompensa of recompensas">
+          <ion-label>
+            <ion-chip color="primary" class="item-label">
+              <ion-icon name="gift-outline"></ion-icon>
+              <ion-label>{{ recompensa.nombreRecompensa }}</ion-label>
+            </ion-chip>
+          </ion-label>
+          <ion-badge color="secondary" class="recompensa-badge">
+            {{ recompensa.valor }}
+          </ion-badge>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-card>
+  
 </ion-content>
