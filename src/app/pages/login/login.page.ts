@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonContent } from '@ionic/angular/standalone';
 import { LoginFormComponent } from "../../components/login-form/login-form.component";
 
 @Component({
@@ -7,7 +7,7 @@ import { LoginFormComponent } from "../../components/login-form/login-form.compo
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonContent, IonTitle, IonToolbar, IonHeader, LoginFormComponent ]
+  imports: [IonContent, LoginFormComponent ]
 })
 export class LoginPage implements OnInit {
 
