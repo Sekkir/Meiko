@@ -66,7 +66,10 @@ export class AlumnoPage implements OnInit {
     toTareasActivas(){
       this.router.navigate(['/tareas-activas'],
         { queryParams: { estudiante: this.id_estudiante } });
-     
+    }
+    toRecompensasActivas(){
+      this.router.navigate(['/estudiante-recom'],
+        { queryParams: { estudiante: this.id_estudiante } });
     }
 
     private async mostrarToast(mensaje: string) {

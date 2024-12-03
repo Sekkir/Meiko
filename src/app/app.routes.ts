@@ -42,12 +42,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/tareas-activas/tareas-activas.page').then( m => m.TareasActivasPage)
   },
   {
-    path: 'tareas-activas',
-    loadComponent: () => import('./pages/tareas-activas/tareas-activas.page').then( m => m.TareasActivasPage)
-  },
-  {
     path: 'recompensas',
     loadComponent: () => import('./pages/recompensas/recompensas/recompensas.page').then( m => m.RecompensasPage)
+  },
+  {
+    path: 'estudiante-recom',
+    loadComponent: () => import('./pages/recompensas/estudiante-recom/estudiante-recom.page').then( m => m.EstudianteRecomPage)
   },
 
 ];

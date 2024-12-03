@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark">
-    <ion-title>Cursos disponibles</ion-title>
+    <ion-title>Mi Perfil</ion-title>
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]="['/login']"></ion-back-button>
     </ion-buttons>
@@ -49,7 +49,7 @@
         <ion-button color="warning" expand="block" (click)="toTareasActivas()">Tareas pendientes</ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button color="success" expand="block">Recompensas disponibles</ion-button>
+        <ion-button color="success" expand="block" (click)="toRecompensasActivas()">Recompensas disponibles</ion-button>
       </ion-col>
     </ion-row>
   </ion-card>
