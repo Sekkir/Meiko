@@ -19,10 +19,6 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/crear-tarea/crear-tarea.page').then( m => m.CrearTareaPage)
   },
   {
-    path: 'menu',
-    loadComponent: () => import('./pages/menu/menu.page').then( m => m.MenuPage)
-  },
-  {
     path: 'login',
     loadComponent: () => import('./pages/login/login.page').then( m => m.LoginPage)
   },
