@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormGroup } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonRow, IonCol, IonButton, IonButtons, IonBackButton, IonLabel, IonInput } from '@ionic/angular/standalone';
+import { ToastController,IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonRow, IonCol, IonButton, IonButtons, IonBackButton, IonLabel, IonInput } from '@ionic/angular/standalone';
 import { ActivatedRoute} from '@angular/router';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/servicios/auth.service';
-
+import { RecompensasService } from 'src/app/servicios/recompensas/recompensas.service';
 
 
 @Component({
@@ -26,6 +26,8 @@ export class RecompensasPage implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private authService: AuthService,
+    private recompensasService: RecompensasService,
+    private toastController: ToastController,
   ) {
     this.recompensaForm = this.fb.group({
       nombreRecompensa: ['', Validators.required],
@@ -43,11 +45,32 @@ export class RecompensasPage implements OnInit {
     });
   }
 
+
   crearRecompensa() {
     if (this.recompensaForm.valid) {
-      const recompensaData = this.recompensaForm.value;
+      const recompensaData = {
+        ...this.recompensaForm.value,
+        id_docente: this.id_docente,  // Agregar el ID del docente
+      };
       console.log('Recompensa creada:', recompensaData);
-      // Aquí puedes agregar la lógica para guardar la recompensa.
+
+      // Llamar al servicio para crear la recompensa en la base de datos
+      this.recompensasService.crearRecompensa(recompensaData).subscribe(
+        (response) => {
+          console.log('Recompensa creada con éxito:', response);
+          // Aquí puedes manejar la respuesta, como mostrar un mensaje de éxito
+        this.presentToast("La recompensa ha sido añadida!");
+        
+        },
+        (error) => {
+          console.error('Error al crear la recompensa:', error);
+          // Manejar el error, como mostrar un mensaje de error
+          this.presentToast("Error al cargar su recompensa :(");
+        
+        }
+      );
+    } else {
+      console.log('Formulario inválido');
     }
   }
 
@@ -63,5 +86,16 @@ export class RecompensasPage implements OnInit {
       }
       return 0;
     }
+
+
+    private async presentToast(message: string) {
+      const toast = await this.toastController.create({
+        message: message,
+        duration: 2000,
+        position: 'bottom'
+      });
+      toast.present();
+    }
+
 
 }
