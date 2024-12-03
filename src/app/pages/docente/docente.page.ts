@@ -118,4 +118,9 @@ export class DocentePage implements OnInit {
   this.router.navigate(['/crear-tarea'],
      { queryParams: { id_curso: this.id_curso, id_seccion: this.id_seccion } });
   }
+
+  haciaCrearRecompensa() {
+    this.router.navigate(['/recompensas'],
+       { queryParams: { id_curso: this.id_curso, id_seccion: this.id_seccion } });
+    }
 }

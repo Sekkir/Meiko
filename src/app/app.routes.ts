@@ -49,5 +49,9 @@ export const routes: Routes = [
     path: 'tareas-activas',
     loadComponent: () => import('./pages/tareas-activas/tareas-activas.page').then( m => m.TareasActivasPage)
   },
+  {
+    path: 'recompensas',
+    loadComponent: () => import('./pages/recompensas/recompensas/recompensas.page').then( m => m.RecompensasPage)
+  },
 
 ];
