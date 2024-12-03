@@ -11,14 +11,14 @@
 
 
   <!-- Lista de Tareas Activas -->
-  <ion-list>
-    <ion-card *ngFor="let tarea of tareas_pendientes" class="tarea-card">
+    <ion-card class="custom-card" *ngFor="let tarea of tareas_pendientes">
       <ion-card-content>
         <div class="tarea-grid" color="light">
           <!-- Columna izquierda -->
           <div class="tarea-info">
             <ion-card-title><strong>{{ tarea.titulo_tarea }}</strong></ion-card-title>
             <p>{{ tarea.descripcion }}</p>
+            <p><br></p>
             <ion-card-subtitle>Clase: {{ tarea.nombre_curso }}</ion-card-subtitle>
             <ion-card-subtitle><strong>Entrega: {{ tarea.fecha_limite | date }}</strong></ion-card-subtitle>
 
@@ -33,5 +33,4 @@
         </div>
       </ion-card-content>
     </ion-card>
-  </ion-list>
 </ion-content>

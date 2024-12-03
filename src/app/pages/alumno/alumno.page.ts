@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './alumno.page.html',
   styleUrls: ['./alumno.page.scss'],
   standalone: true,
-  imports: [IonButton, IonCardSubtitle,IonCol, IonRow, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonButtons, IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonButton, IonCol, IonRow, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonButtons, IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class AlumnoPage implements OnInit {
 

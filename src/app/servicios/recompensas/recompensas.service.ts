@@ -18,4 +18,9 @@ export class RecompensasService {
   getRecompensasByCurso(id_curso: number): Observable<any> {
     return this.http.get(`${this.apiUrl}s/curso/${id_curso}`);  // Ajusta la URL para obtener las recompensas por curso
   }
+
+  getRecompensasByEstudiante(id_estudiante: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}s/estudiante/${id_estudiante}`);
+  }
+
 }

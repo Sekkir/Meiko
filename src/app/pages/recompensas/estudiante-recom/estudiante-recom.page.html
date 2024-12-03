@@ -7,10 +7,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium" [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">estudiante-recom</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content color="medium">
+  <ion-card class="custom-card" *ngFor="let recompensa of recompensas">
+    <ion-card-header>
+      <ion-card-title>{{ recompensa.nombre_recompensa }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label><strong>Curso: {{ recompensa.nombre_curso }}</strong></ion-label>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
