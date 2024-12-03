@@ -57,9 +57,13 @@ export class RecompensasPage implements OnInit {
       // Llamar al servicio para crear la recompensa en la base de datos
       this.recompensasService.crearRecompensa(recompensaData).subscribe(
         (response) => {
+
           console.log('Recompensa creada con éxito:', response);
-          // Aquí puedes manejar la respuesta, como mostrar un mensaje de éxito
-        this.presentToast("La recompensa ha sido añadida!");
+          this.presentToast("La recompensa ha sido añadida!");
+
+
+        // Limpiar los campos del formulario
+        this.recompensaForm.reset();
         
         },
         (error) => {
